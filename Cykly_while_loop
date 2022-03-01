@@ -1,0 +1,81 @@
+"""
+1. V tombole bylo prodáno celkem 1000 lístků. Naším úkolem je vylosovat náhodně tři výherce.
+Napište program, který vygeneruje a vypíše tři čísla mezi 1 a 1000.
+Využijte funkci randint, nezapomeňte ale, že si ji musíte importovat z modulu random.
+Neřešte, že jedno číslo může být vygenerováno dvakrát.
+"""
+
+import random
+
+stop = 3
+for i in range(stop):
+    print(random.randint(0, 1000))
+
+"""
+2. Vypišme si čísla z nějakého rozsahu na základě jejich dělitelnosti dvěma čísly.
+Zkuste z nějakého rozsahu čísel vypsat čísla, která jsou dělitelná 3 i 4 současně.
+Zkuste z nějakého rozsahu čísel vypsat čísla, která jsou dělitelná 5 nebo 6. Stačí vypsat text: "Číslo je dělitelné 5 nebo 6."
+"""
+
+start = int(input("Zadej začátek: "))
+stop = int(input("Zadej konec: "))
+
+print("Čísla dělitelná 3 i 4 současně:")
+for i in range(start, stop):
+    if i % 3 == 0 and i % 4 == 0:
+        print(i)
+
+print("Čísla dělitelná 5 nebo 6:")
+for i in range(start, stop):
+    if i % 5 == 0 or i % 6 == 0:
+        print(i)
+
+"""
+3. Vraťte se k příkladu se zadáváním seznamu hostu na párty a zkopírujte si kód k sobě do editoru.
+Upravte program tak, že pokud uživatel v průběhu zádávání jmen napíše “konec”,
+cyklus na zadávání jmen se ukončí.
+"""
+
+num_of_guests = int(input("Zadej počet hostů: "))
+guest_list = []
+for i in range(num_of_guests):
+    new_guest = input("Zadej jméno hosta nebo konec pro ukončení: ")
+    if new_guest == "konec":
+        break
+    guest_list.append(new_guest)
+print(guest_list)
+
+"""
+4. Požádej uživatele o zadání celého čísla. Následně urči, zda je toto číslo prvočíslo.
+Prvočíslo je číslo, které je dělitelné beze zbytku pouze 2 čísly - 1 a sebou samotným.
+Například 5 je prvočíslo, protože je dělitelná pouze 1 a 5.
+Naoapk 4 není prvočíslo, protože je dělitelná 1, 2 a 4.
+"""
+
+number = int(input("Zadej číslo: "))
+prime = True
+for i in range(2, number):
+    if number % i == 0:
+        prime = False
+        break
+if prime:
+    print("Číslo je prvočíslo!")
+else:
+    print("Číslo není prvočíslo!")
+
+"""
+5. Napište interaktivní hru, ve které počítač vygeneruje tajné číslo v rozsahu 1 až 100
+(použijte funkci random.randint()). Následně se v cyklu ptejte uživatele,
+aby zadal číslo a vypisujte vždy jestli je zadané číslo nižší nebo vyšší než tajné číslo.
+Ukončete cyklus v momentě, kdy uživatel trefí tajné číslo.
+"""
+
+num = random.randint(1,100)
+
+user_guess = int(input('Hadej cislo: '))
+
+while user_guess != num:
+    print(f'Tajne cislo je {"mensi" if user_guess < num else "vesi"} nez tvuj odhad.')
+    user_guess = int(input('Hadej cislo: '))
+
+print('Uhodl jsi!')
